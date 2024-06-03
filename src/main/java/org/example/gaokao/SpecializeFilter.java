@@ -24,11 +24,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class SpecializeFilter {
     public static void main(String[] args) {
-        File file = FileUtil.file(Consts.FILE_DIR + "school.txt");
+        /*File file = FileUtil.file(Consts.FILE_DIR + "school.txt");*/
+        File file = FileUtil.file(Consts.FILE_DIR + "schools.txt");
         FileReader fileReader = FileReader.create(file);
         String content = fileReader.readString();
         List<Item> list = JSONUtil.toList(content, Item.class);
-        FileWriter outputFile = FileWriter.create(FileUtil.file(Consts.FILE_DIR + "special_output.txt"), CharsetUtil.CHARSET_UTF_8);
+        /*FileWriter outputFile = FileWriter.create(FileUtil.file(Consts.FILE_DIR + "special_output.txt"), CharsetUtil.CHARSET_UTF_8);*/
+        FileWriter outputFile = FileWriter.create(FileUtil.file(Consts.FILE_DIR + "specialize_filter.txt"), CharsetUtil.CHARSET_UTF_8);
 
         /*List<String> existSchools = FileReader.create(FileUtil.file(Consts.FILE_DIR + "exist_schools.txt")).readLines();
         list = list.stream().filter(item -> !existSchools.contains(item.name)).toList();*/
@@ -36,7 +38,7 @@ public class SpecializeFilter {
         AtomicInteger schoolCount = new AtomicInteger(1);
         int schoolTotal = list.size();
         list.forEach(item -> {
-            Arrays.asList(2023, 2022, 2021, 2020).forEach(year -> {
+            Arrays.asList(2023, 2022, 2021, 2020, 2019).forEach(year -> {
                 int page = 1;
                 while (true) {
                     try {
